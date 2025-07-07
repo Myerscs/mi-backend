@@ -1,10 +1,10 @@
-
 import express from 'express';
 import cors from "cors";
 import { PORT } from './config/config.js';
 import rotuerTypeUsers from './router/TypeUsersRouter.js';
 import  { RouterUsuer } from './router/UserRouter.js';
 import { sequelize } from "./db/conexion.js";
+import {RouterComment} from "./router/CommentRouter.js";
 
 const _PORT = PORT || 3000;
 const app = express();
@@ -13,6 +13,7 @@ app.use(cors());
 
 app.use('/api', rotuerTypeUsers);
 app.use('/api', RouterUsuer);
+app.use('/api', RouterComment);
 
 const main = async () => {
     try {

@@ -29,9 +29,10 @@ export const getOneUser = async (req, res) => {
 export const createUsers = async (req, res) => {
   try {
     const { user, email, password } = req.body;
-    if (!(user ||  email ||  password)) {
-      res.status(400).json({ message: "all input is required" });
-    }
+   if (!user || !email || !password) {
+    return res.status(400).json({ message: "All input is required" });
+  }
+
     // check if email already exist
     // Validate if email exist in our database
     const oldUser = await UserModel.findOne({ where: { email: email } });
